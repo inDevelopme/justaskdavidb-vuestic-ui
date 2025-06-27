@@ -15,5 +15,17 @@ app.use(createPinia())
 app.use(router)
 
 
-app.use(createVuestic());
+app.use(createVuestic({
+  config: {
+    components: {
+      VaCard: true,
+      VaCardTitle: true,
+      VaCardContent: true,
+      VaInput: true,
+      VaButton: true,
+      VaIcon: true,
+    }
+  }
+}))
+
 app.mount('#app')
