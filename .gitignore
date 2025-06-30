@@ -34,5 +34,3 @@ playwright-report/
 node_modules/
 .env
 dist/
-package-lock.json
-package.json
