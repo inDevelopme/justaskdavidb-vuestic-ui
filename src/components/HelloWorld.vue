@@ -1,4 +1,4 @@
 <template>
-  <div>Hellow World</div>
+  <div>Hello World</div>
 </template>
 
