@@ -2,6 +2,25 @@ By following this streamlined guide, users should be able to set up and run your
 
 Please make sure you have completed the [JustAskDavidB](https://github.com/inDevelopme/justaskdavidb) orientation before attempting to contribute to this repository.
 
+## Getting Started with Ubuntu
+
+These instructions were tested using Zorin 17. Please let me know if you have issues with running them for your linux machine. 
+
+### System Preperation
+We are first going to prepare your system. This will make sure your system pull in the latest packages + install the required essential web development tools and git
+
+```
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y build-essential curl git
+```
+
+### Install Node.JS & NPM
+```
+curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+sudo apt install -y nodejs
+```
+
+
 ## 🛠️ Installation Guide for Windows Users (Using npm & GitHub Desktop)
 
 ### Step 1: Install GitHub Desktop
