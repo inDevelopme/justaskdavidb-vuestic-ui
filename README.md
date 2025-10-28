@@ -1,25 +1,13 @@
-By following this streamlined guide, users should be able to set up and run your Vuestic UI project on a Windows machine using GitHub Desktop and npm with ease. If you have any specific configurations or additional setup steps unique to your project, consider adding them to this guide to further assist users.
+# Overview
+By following this streamlined guide, users should be able to set up and run your Vuestic UI project on a Windows and Linux machine with ease. If you have any specific configurations or additional setup steps unique to your project, consider adding them to this guide to further assist users.
 
 Please make sure you have completed the [JustAskDavidB](https://github.com/inDevelopme/justaskdavidb) orientation before attempting to contribute to this repository.
 
-## Getting Started with Ubuntu
+## 📝 Additional Notes
 
-These instructions were tested using Zorin 17. Please let me know if you have issues with running them for your linux machine. 
-
-### System Preperation
-We are first going to prepare your system. This will make sure your system pull in the latest packages + install the required essential web development tools and git
-
-```
-sudo apt update && sudo apt upgrade -y
-sudo apt install -y build-essential curl git
-```
-
-### Install Node.JS & NPM
-```
-curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-sudo apt install -y nodejs
-```
-
+* **Vue Version**: This project uses Vue 3, as Vuestic UI is compatible with Vue.js 3.0.
+* **Customization**: Vuestic UI offers extensive customization options. Refer to the [Vuestic UI Configuration Guide](https://ui.vuestic.dev/getting-started/configuration-guide) for more details.
+* **Component Examples**: Explore the [Vuestic UI Kitchensink](https://ui.vuestic.dev/getting-started/kitchensink/) to see examples of all components.
 
 ## 🛠️ Installation Guide for Windows Users (Using npm & GitHub Desktop)
 
@@ -90,10 +78,98 @@ By default, the application will be accessible at `http://localhost:3000`.
 
 ---
 
-## 📝 Additional Notes
+## Getting Started with Ubuntu
 
-* **Vue Version**: Ensure your project is using Vue 3, as Vuestic UI is compatible with Vue.js 3.0.
-* **Customization**: Vuestic UI offers extensive customization options. Refer to the [Vuestic UI Configuration Guide](https://ui.vuestic.dev/getting-started/configuration-guide) for more details.
-* **Component Examples**: Explore the [Vuestic UI Kitchensink](https://ui.vuestic.dev/getting-started/kitchensink/) to see examples of all components.
+These instructions were tested using Zorin 17. Please let me know if you have issues with running them for your linux machine. 
+
+### Prepation: System Preperation
+
+We are first going to prepare your system. This will make sure your system pull in the latest packages + install the required essential web development tools and git
+
+**Installation and Update**  
+
+```
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y build-essential curl git
+```
+
+**Validation**  
+
+`git --version`
+
+### 1. Implementation: Setup Node.JS
+We are now going to install Node.JS on our machine.  
+
+**Installation**  
+
+```
+curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+sudo apt install -y nodejs
+```
+
+**Validation**  
+
+```
+node -v
+npm -v
+```
+
+### 2. Implementation: Clone Repository  
+
+You can make a local copy of the repository to play with -OR- you can fork your own and then perform the following step clone activity.  
+
+```
+git clone https://github.com/inDevelopme/justaskdavidb-vuestic-ui.git
+cd justaskdavidb-vuestic-ui
+```
+
+### 3. Implementation: Setup Node Package Manager (NPM)
+
+**Installation**  
+We want a verbose output of npm so we can make sure its doing something while we wait.  
+`npm install --verbose`
+
+**Validation**  
+You can confirm that everything was installed successfully: `npm run`  
+
+You should get the following output  
+>>>
+  dev
+    vite
+  build
+    vite build
+  preview
+    vite preview
+  test:unit
+    vitest
+  test:e2e
+    playwright test
+  test:e2e:dev
+    start-server-and-test 'vite dev --port 4173' http://localhost:4173 'cypress open --e2e'
+  lint
+    eslint . --fix
+>>>  
+
+### 4. Implementation: Setup Playwright
+
+Node allows for end-to-end testing using Playwright.
+
+**Installation**  
+`npx playwright install`
+
+**Validation**
+`npx playwright --version`
+
+
+### Validation: Completeness
+
+Now make sure all the following commands work. At the current moment. All programs should run without issue except for playwright. Playwright will run but will fail validation.  
+
+**Run app server locally:** `npm run dev`  
+**Run compiler for static files:** `npm run build`  
+**Run unit tests locally:** `npm run test:unit`  
+**Run end-to-end test suite locally:** `npx playwright --version`  
+**Run code analyer:** `npm run lint`  
+
 
 
