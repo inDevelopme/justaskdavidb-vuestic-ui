@@ -7,6 +7,8 @@ import request from 'supertest';
 // Import the Express app (update this import if the export changes)
 import app from '../mock-backend/server.js';
 
+
+// Test the Mock Server
 describe('Mock Backend Server', () => {
   it('should start the server and respond to /api/health', async () => {
     const res = await request(app).get('/api/health');
@@ -35,3 +37,15 @@ describe('Mock Backend Server', () => {
   });
   --------------------------------------------------------------*/
 });
+
+
+describe('POST /api/stripe/create-checkout-session', () => {
+  it('should return a mock sessionId for Stripe Checkout', async () => {
+    const response = await request(app)
+      .post('/api/stripe/create-checkout-session')
+      .send({});
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual({ sessionId: 'cs_test_mocked_session_id_1234567890' });
+  });
+});
+

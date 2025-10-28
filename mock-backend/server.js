@@ -37,7 +37,20 @@ app.get('/api/health', (req, res) => {
 });
 
 // Add other endpoints below this line
+//------------------------------------------------------------------------------------------------------
+// Mock endpoint: create a Stripe Checkout session
+app.post('/api/stripe/create-checkout-session', (req, res) => {
+  // In real usage, you'd use Stripe SDK and return a real sessionId
+  // Here, we return a mock sessionId for frontend testing
+  res.json({
+    sessionId: 'cs_test_mocked_session_id_1234567890'
+  });
+});
 
+
+
+//----------------------------------------------------------------------------------------------------------
+// -- DO NOT ADD CODE BELOW THIS LINE
 // Only start the server when running in development
 // The server will never start in production mode
 // We do not need our mock server running when using "npm run test:unit"
