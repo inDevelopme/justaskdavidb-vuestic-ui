@@ -1,45 +1,39 @@
-import { defineConfig, globalIgnores } from 'eslint/config'
-import globals from 'globals'
-import js from '@eslint/js'
-import pluginVue from 'eslint-plugin-vue'
-import pluginVitest from '@vitest/eslint-plugin'
-import pluginCypress from 'eslint-plugin-cypress/flat'
-import pluginPlaywright from 'eslint-plugin-playwright'
+import js from "@eslint/js";
+import globals from "globals";
+import tseslint from "typescript-eslint";
+import pluginVue from "eslint-plugin-vue";
+import { defineConfig } from "eslint/config";
 
 export default defineConfig([
   {
-    name: 'app/files-to-lint',
-    files: ['**/*.{js,mjs,jsx,vue}'],
+    files: ["**/*.{js,mjs,cjs,ts,mts,cts,vue}"],
+    plugins: { js },
+    extends: ["js/recommended"],
+    languageOptions: { globals: globals.browser }
   },
-
-  globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**']),
-
+  tseslint.configs.recommended,
+  pluginVue.configs["flat/essential"],
   {
+    files: ["**/*.vue"],
+    languageOptions: { parserOptions: { parser: tseslint.parser } }
+  },
+  // Node override for mock-backend
+  {
+    files: ["mock-backend/**/*.js"],
+    languageOptions: {
+      globals: globals.node
+    }
+  },
+  {
+    files: ["cypress/e2e/**/*.js"],
     languageOptions: {
       globals: {
         ...globals.browser,
-      },
-    },
-  },
-
-  js.configs.recommended,
-  ...pluginVue.configs['flat/essential'],
-  
-  {
-    ...pluginVitest.configs.recommended,
-    files: ['src/**/__tests__/*'],
-  },
-  
-  {
-    ...pluginCypress.configs.recommended,
-    files: [
-      'cypress/e2e/**/*.{cy,spec}.{js,ts,jsx,tsx}',
-      'cypress/support/**/*.{js,ts,jsx,tsx}'
-    ],
-  },
-  
-  {
-    ...pluginPlaywright.configs['flat/recommended'],
-    files: ['e2e/**/*.{test,spec}.{js,ts,jsx,tsx}'],
-  },
-])
+        ...globals.node,
+        ...globals.mocha,   // for describe/it
+        cy: "readonly",     // for Cypress itself
+        Cypress: "readonly"
+      }
+    }
+  }
+]);

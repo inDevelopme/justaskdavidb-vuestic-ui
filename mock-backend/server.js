@@ -38,11 +38,11 @@ app.get('/api/health', (req, res) => {
 
 // Add other endpoints below this line
 
-// Only start the server when running in development or test or locally
+// Only start the server when running in development
 // The server will never start in production mode
 // We do not need our mock server running when using "npm run test:unit"
 // That command runs the mock-server in memory and does not actually listen
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV === 'development') {
   const PORT = 4242;
   app.listen(PORT, () => {
     console.log(`Mock backend running on http://localhost:${PORT}`);
