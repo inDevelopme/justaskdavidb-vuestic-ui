@@ -40,7 +40,7 @@ const handleCheckout = async () => {
     sessionId.value = id
     // In a real app, you would redirect:
     // window.location.href = `https://checkout.stripe.com/pay/${id}`
-  } catch (err: any) {
+  } catch (err: unknown) {
     error.value = err.message || 'Something went wrong'
   } finally {
     loading.value = false

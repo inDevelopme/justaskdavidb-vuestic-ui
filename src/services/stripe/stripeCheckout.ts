@@ -39,7 +39,7 @@ export async function createStripeCheckoutSession(): Promise<string> {
 
     // Return the sessionId so the caller can use it (e.g., to redirect to Stripe)
     return data.sessionId;
-  } catch (error: any) {
+  } catch (error: unknown) {
     // If any error occurs above, we catch it here and throw a new error
     // The calling code (like your Vue component) can show an error message
     throw new Error(error.message || 'Unknown error creating Stripe Checkout session');

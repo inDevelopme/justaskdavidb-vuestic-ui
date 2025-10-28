@@ -1,17 +1,17 @@
 import { describe, it, expect } from 'vitest'
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import { routes } from '@/router/index.js'
 
 describe('Stripe routes', () => {
   it('should contain a /stripe parent route with correct children', () => {
     // Find the /stripe parent route
-    const stripeRoute = routes.find(r => r.path === '/stripe')
+    const stripeRoute = routes.find((r: RouteRecordRaw) => r.path === '/stripe')
     expect(stripeRoute).toBeTruthy()
     expect(stripeRoute!.children).toBeTruthy()
     // Check for 'checkout' child
-    const checkoutChild = stripeRoute!.children.find((c: any) => c.path === 'checkout')
+    const checkoutChild = stripeRoute!.children!.find((c: RouteRecordRaw) => c.path === 'checkout')
     expect(checkoutChild).toBeTruthy()
-    expect(checkoutChild.name).toBe('stripe-checkout')
+    expect(checkoutChild!.name).toBe('stripe-checkout')
   })
 
   it('should resolve the /stripe/checkout route to the correct component', async () => {
