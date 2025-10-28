@@ -1,12 +1,15 @@
 // mock-backend/server.js
 
 // Minimal Express backend implementation
+// ---- this uses commonjs ---
+// const express = require('express');
+// const cors = require('cors');
+// --------------------------
 
-const express = require('express');
+// ESM
+import express from 'express';
+import cors from 'cors';
 
-
-
-const cors = require('cors');
 
 
 // This creates an instance of an Express application.
