@@ -5,6 +5,14 @@ import pluginVue from "eslint-plugin-vue";
 import { defineConfig } from "eslint/config";
 
 export default defineConfig([
+  // Ignore dependencies and build output folders (recommended)
+  {
+    ignores: [
+      "node_modules/",
+      "dist/",
+      "build/"
+    ]
+  },
   {
     files: ["**/*.{js,mjs,cjs,ts,mts,cts,vue}"],
     plugins: { js },
